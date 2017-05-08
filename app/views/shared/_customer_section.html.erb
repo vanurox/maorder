@@ -1,0 +1,28 @@
+<div class="panel-heading">
+                            <h3 class="panel-title">Customer section</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                    <%= link_to("My Orders",{:controller=>'public',:action=>'myorder'},:class=>"fa fa-list")%> 
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <%= link_to("My wishlist",{:controller=>'public',:action=>'wishlist'},:class=>"fa fa-heart")%> 
+                                </li>
+                                <li>
+                                    
+                                    <%= link_to("My account",{:controller=>'public',:action=>'account'},:class=>"fa fa-user")%> 
+                                </li>
+                                <li>
+                                    <% if session[:omniauth] %>
+                                        <%=link_to("Signout",:controller=>"sessions",:action=>"destroy")%>
+                                        <%else%>
+                                        <%=link_to("Logout",{:controller=>"login",:action=>"logout"},:class=>'fa fa-sign-out')%>
+                                    <%end%>    
+                                </li>
+                            </ul>
+                        </div>

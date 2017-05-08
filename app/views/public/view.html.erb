@@ -1,0 +1,445 @@
+
+
+      <div class="content col-xs-12 sml_icn">
+       <% @maincategory.each do |maincategory| %>
+            <a>    
+                <div class="col-xs-3">
+                <%if maincategory.main_category == "Men" %>
+                    <%= link_to(image_tag("men.png",  :class => 'img-responsive',:alt => ''),{:controller=>"public",:action=>"category",:id=>maincategory.id})%>
+                    <div class="col-xs-12">
+                        <h6 >Men</h6>
+                    </div> 
+                <%elsif  maincategory.main_category == "Women"%>
+                    <%= link_to(image_tag("women.png",  :class => 'img-responsive',:alt => ''),{:controller=>"public",:action=>"category",:id=>maincategory.id})%>
+                    <div class="col-xs-12">
+                        <h6 >Women</h6>
+                    </div>
+                <%elsif  maincategory.main_category == "Kids"%>
+                    <%= link_to(image_tag("kids.png",  :class => 'img-responsive',:alt => ''),{:controller=>"public",:action=>"category",:id=>maincategory.id})%> 
+                    <div class="col-xs-12">
+                        <h6 >Kids</h6>
+                    </div>
+                <%elsif  maincategory.main_category == "Electronics"%>
+                    <%= link_to(image_tag("electronics.png",  :class => 'img-responsive',:alt => ''),{:controller=>"public",:action=>"category",:id=>maincategory.id})%>
+                    <div class="col-xs-12">
+                        <h6 >Electronics</h6>
+                    </div>
+                    <%elsif  maincategory.main_category == "Home Furnishing"%>
+                    <%= link_to(image_tag("homee.png",  :class => 'img-responsive',:alt => ''),{:controller=>"public",:action=>"category",:id=>maincategory.id})%>
+                    <div class="col-xs-12">
+                        <h6 >Home Furnish</h6>
+                    </div>
+                <%end%>    
+                </div>
+            </a>
+        <%end%>    
+        
+        
+    </div>
+
+    <div id="all">
+        <div id="content">
+            <div class="container">
+                <div class="col-md-12">
+                    <div id="main-slider">
+                        <div class="item">
+                    <%= image_tag("slider1.jpg",  :class => 'img-responsive',:alt => '')%>           
+
+                        </div>
+                        <div class="item">
+                    <%= image_tag("slider2.png",  :class => 'img-responsive',:alt => '')%>           
+
+                        </div>
+                        <div class="item">
+                    <%= image_tag("slider3.png",  :class => 'img-responsive',:alt => '')%>           
+
+                        </div>
+                        <div class="item">
+                    <%= image_tag("slider4.jpg",  :class => 'img-responsive',:alt => '')%>           
+
+                        </div>
+                    </div>
+                    <!-- /#main-slider -->
+                </div>
+            </div>
+
+            <!-- *** ADVANTAGES HOMEPAGE ***
+ _________________________________________________________ -->
+            <div id="advantages">
+
+                <div class="container">
+                    <div class="same-height-row">
+                        <div class="col-sm-4">
+                            <div class="box same-height clickable">
+                                <div class="icon"><i class="fa fa-heart"></i>
+                                </div>
+
+                                <h3><a href="#">We love our customers</a></h3>
+                                <p>We are known to provide best possible service ever</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="box same-height clickable">
+                                <div class="icon"><i class="fa fa-tags"></i>
+                                </div>
+
+                                <h3><a href="#">Best prices</a></h3>
+                                <p>You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="box same-height clickable">
+                                <div class="icon"><i class="fa fa-thumbs-up"></i>
+                                </div>
+
+                                <h3><a href="#">100% satisfaction guaranteed</a></h3>
+                                <p>Free returns on everything for 3 months.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.container -->
+
+            </div>
+            <!-- /#advantages -->
+
+            <!-- *** ADVANTAGES END *** -->
+
+            <!-- *** HOT PRODUCT SLIDESHOW ***
+ _________________________________________________________ -->
+            <div id="hot">
+
+                <div class="box">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <h2>Hot this week</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="product-slider">
+                     <%if @pro.size > 0%>
+                        <% @pro.each do |product| %>
+                        <div class="item">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                                 <%if product.photo.size > 0 %>
+                                                    <%  product.photo.each do |f| %>
+                                                        <%= link_to(image_tag("/uploads/"+ f.photo1,:width=>'100%',:class=>'img-responsive',:style=>"height:200px;"),{:action=>'info',:id=>product.id}) %> 
+                                                    <%end%>
+                                                  <%else%>
+                                                    <%= link_to(image_tag("image_soon.gif",:width=>'100%',:style=>"height:200px;"),{:action=>'info',:id=>product.id}) %>           
+                                                <%end%>
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                                 <%if product.photo.size > 0 %>
+                                                    <%  product.photo.each do |f| %>
+                                                        <%= link_to(image_tag("/uploads/"+ f.photo1,:width=>'100%',:class=>"img-responsive",:style=>"height:200px;"),{:action=>'info',:id=>product.id}) %> 
+                                                    <%end%>
+                                                  <%else%>
+                                                    <%= link_to(image_tag("image_soon.gif",:width=>'100%',:class=>"img-responsive",:style=>"height:200px;"),{:action=>'info',:id=>product.id}) %>           
+                                                <%end%>       
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+                                                <%= image_tag("image_soon.gif",  :class => 'img-responsive',:alt => '')%>           
+
+                                </a>
+                                <div class="text">
+                                    <h3><a ><%= link_to(product.product_name,:action=>'info',:id=>product.id) %></a></h3>
+                                    <p class="price">$.<%= product.price %></p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.product -->
+                        </div>
+                    <%end%>
+                    <%end%>
+
+                    </div>
+                    <!-- /.product-slider -->
+                </div>
+                <!-- /.container -->
+
+            </div>
+            <!-- /#hot -->
+
+            <!-- *** HOT END *** -->
+
+            <!-- *** GET INSPIRED ***
+ _________________________________________________________ -->
+            <div class="container" data-animate="fadeInUpBig">
+                <div class="col-md-12">
+                    <div class="box slideshow">
+                        <h3>Get Inspired</h3>
+                        <p class="lead">Get the inspiration from our world class designers</p>
+                        <div id="get-inspired" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <a href="#">
+                                    <%= image_tag("getinspired1.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <%= image_tag("getinspired2.jpg",  :class => 'img-responsive',:alt => '')%>   
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <%= image_tag("getinspired3.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- *** GET INSPIRED END *** -->
+
+            <!-- *** BLOG HOMEPAGE ***
+ _________________________________________________________ -->
+
+            <div class="box text-center" data-animate="fadeInUp">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h3 class="text-uppercase">From our Collection</h3>
+
+                        <p class="lead">What's new in the world of fashion? <a>Check our Categories!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div class="col-xs-12" style="margin:0;padding:0;background:#fff;position:relative;z-index:100;">
+        <div class="col-xs-10 col-xs-offset-1" style="position:relative;z-index:100;">
+               <div class="row same-height-row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="box same-height">
+                                <h3>You may also like these products</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                            <%= link_to(image_tag("man1.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>1}) %>
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("main2.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>1}) %>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="invisible">
+                                            <%= image_tag("man1.jpg",:class => 'img-responsive') %>
+                                </a>
+                                <div class="text">
+                                    <h3>Men</h3>
+                                    <p class="price">MaOrder Collection</p>
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+
+                                            <a >
+                                            <%= link_to(image_tag("product1.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>2}) %>
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("product1_2.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>2}) %>
+                                               
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+
+                                            <%= image_tag("product1.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                                <div class="text">
+                                    <h3>Women</h3>
+                                    <p class="price">MaOrder Collection</p>
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                            <%= link_to(image_tag("kid3.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>3}) %>
+
+                                           
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("kid4.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>3}) %>
+
+                                            
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+                                            <%= image_tag("kid3.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                                <div class="text">
+                                    <h3>Kids</h3>
+                                    <p class="price">MaOrder Collection</p>
+
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+                    </div>
+
+                    <div class="row same-height-row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="box same-height">
+                                <h3>Products viewed recently</h3>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                            <%= link_to(image_tag("electric.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>4}) %>
+
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("electric.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>4}) %>
+                                             
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+                                            <%= image_tag("electric.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                                <div class="text">
+                                    <h3>Electronics</h3>
+                                    <p class="price">MaOrder Collection</p>
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                            <%= link_to(image_tag("furnish.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>5}) %>
+
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("furnish.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category',:id=>5}) %>
+                                            
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+                                            <%= image_tag("furnish.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                                <div class="text">
+                                    <h3>Home Furnishing</h3>
+                                    <p class="price">MaOrder Collection</p>
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a >
+                                            <%= link_to(image_tag("cos.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category'}) %>
+
+
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a >
+                                            <%= link_to(image_tag("cos.jpg",:class => 'img-responsive'),{:controller=>"public",:action=>'category'}) %>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a  class="invisible">
+                                            <%= image_tag("cos.jpg",  :class => 'img-responsive',:alt => '')%>   
+
+                                </a>
+                                <div class="text">
+                                    <h3>Cosmetics</h3>
+                                    <p class="price">MaOrder Collection</p>
+
+                                </div>
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
+            <!-- /.container -->
+
+            <!-- *** BLOG HOMEPAGE END *** -->
+        
+        </div>
+                
+          <!-- /#content -->
+    </div>

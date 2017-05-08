@@ -1,0 +1,37 @@
+<style type="text/css">
+.color{
+	width: 55px;
+	height: 15px;
+	margin: auto auto;
+}
+</style>
+<div class="row">
+            <div class="col-lg-6 col-lg-offset-1 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+  
+  <table class="table table-hover table-bordered">
+	<thead>
+			<tr>
+				<td>Name</td>
+				<td>Brand</td>
+				<td>Price</td>
+				<td>Color</td>
+
+				
+				
+			</tr>
+	</thead>
+			<tr class="danger">
+				<td><%= @kitchenappliance.product.product_name %></td>
+				<td><%= @kitchenappliance.product.brand %></td>
+				<td><%= @kitchenappliance.product.price %></td>
+				<td><div class="color" style="background:<%= @kid.color %>"></div></td>
+				
+				
+			</tr>
+			<%= button_to('Back to view page', :controller=>'feature',:action=>'show')  %>
+			
+				
+
+</table>
+</div>
+</div>

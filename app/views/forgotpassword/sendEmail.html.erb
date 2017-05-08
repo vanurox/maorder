@@ -1,0 +1,37 @@
+ <div class="container top1">
+                <div class="row vertical-offset-100">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="panel panel-default" style="border:0px solid#D3D3D3;box-shadow: 1px 3px 5px #D3D3D3">
+                            <div class="panel-heading">                                
+                                <div class="row-fluid user-row">
+                                <%=image_tag('logo1.png',:style=>'height:100px; width:100px',:class=>"img-responsive") %>
+                                   
+                                    <div class="row panel-heading-inner">
+                                <div class="col-xs-10 col-xs-offset-1">                                
+                                    <h2>You have to click on link in the Email</h2><br>
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1">
+                                    <p>This email is generated for the authentication purpose to ensure your entity and make validation process easy for you please note if your identity is not valid you have to verify again.</p>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                            <%= render partial: "shared/errors", locals: {object: @object} %>
+                            <%= render partial: "shared/success", locals: {msg: @msg} %>
+                            <div class="panel-body">
+                             
+                                <%= form_for :sendEmail ,:url =>{:action=>'sendLink'},:class=>'form-signin' do |f|%>
+                                    <fieldset>
+                                        <label class="panel-login">
+                                            <div class="login_result"></div>
+                                        </label>
+                                        <input class="form-control" placeholder="Enter your Email" id="email" type="email" required name="sendEmail[email]">
+                                        <br>
+                                        <input class="btn btn-lg own_color btn-block" type="submit" id="login" value="Send »">
+                                    </fieldset>
+                                <%end%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,2 @@
+module KitchenapplianceHelper
+end

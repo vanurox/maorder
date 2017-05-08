@@ -1,0 +1,127 @@
+<script>
+
+     $(document).ready(function(){
+     $(".check").click(function(){
+     $(".sh").toggle(500);
+     });
+     });
+</script>
+<div class="wrapper">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xs-12">
+                   <%= render partial: "shared/success", locals:{msg:@msg}%>
+                    <%= render partial:'shared/errors',locals:{object:@object}%> 
+                      <div class="col-md-8 col-sm-7 col-xs-12">
+                           <%= form_for :billing,:url=>{:controller=>'public',:action=>'saveOrder'} do |f| %>
+                          <div class="row">
+                              <div class="col-xs-12 check" style="color:#3da892"><h3>Checkout</h3></div>
+                          </div>
+                          <div class="row">
+                              <div class="col-xs-12" style="box-shadow:5px 5px 10px #888; margin-bottom:30px;">
+                                  <div class="col-sm-6">
+                                      <div class="row maintext"><h3> <i class="fa fa-calculator" aria-hidden="true" style="color:#3da892;"></i> BILLING </h3></div>
+                                      <div class="row form-group" >
+                                         <input type="checkbox" class="check" checked="">
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-12 ">
+                                              <div class="row textinput">NAME</div>
+                                          </div> 
+                                          <div class="col-sm-11 form-group">
+                                              <div class="row"><input type="text" class="form-control" id="name" name="billing[name]" required = "required"></div>
+                                          </div>
+
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">Email</div>
+                                          </div>
+                                          <div class="col-sm-11 form-group">
+                                              <div class="row"><input type="email" class="form-control" id="email" name="billing[email]" required = "required"></div>
+                                          </div>
+
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">Contact</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="contact" name="billing[contact]" required = "required"></div>
+                                          </div>
+
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">Country</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="country" name="billing[country]" required = "required"></div>
+                                          </div>
+
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">ADDRESS</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="billing[address" name="billing[address]" required = "required"></div>
+                                          </div>
+                                        
+                                          
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">ZipCode</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="zip" name="billing[zip]" required = "required"></div>
+                                          </div>
+                                          
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-6 sh" style="margin-top:50px;">
+                                      <div class="row maintext"><h3> <i class="fa fa-car" aria-hidden="true" style="color:#3da892;"></i>
+                                      SHIPPING</h3></div>
+                                      <div class="row maintext"></div>
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">NAME</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="sname" name="shipping_name" ></div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">ADDRESS</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="saddress" name="shipping_address" ></div>
+                                          </div>
+                                          
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">ZipCode</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id="szip" name="shipping_zip" ></div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="row textinput">PHONE NUMBER</div>
+                                          </div>
+                                          <div class="col-sm-11">
+                                              <div class="row"><input type="text" class="form-control" id = "scontact" name= "shipping_contact" ></div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                             <div class="row modes" >
+                              <div class="col-xs-12 text-center" style="padding:5px;">
+                                  <%= submit_tag('Save',:class=>'btn btn-success btn-lg', :style=>"background:#3da892;") %>
+                              </div>
+                          </div>
+                              </div>
+                          </div>
+                          <% end %> 
+                          
+                      </div>
+                      <!-- left part ends here-->
+                     
+                 </div> 
+                  </div>
+              </div>
+          </div>
+      </div>       
+
+
+
+
+

@@ -1,0 +1,57 @@
+<div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><%=link_to("Home",:controller=>"public",:action=>"view") %>
+                        </li>
+                        <li>Maorder categories</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12">
+                    <!-- *** MENUS AND FILTERS ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Categories</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked category-menu">
+                                <% @maincategory.each do |maincategory| %>
+                                <li><h4>
+                                    <a><%= maincategory.main_category %><span class="badge pull-right">Maorder</span></a></h4>
+                                    <ul>
+                                    <% if maincategory.category %>
+                                    <% @cat1 = Category.where("maincategory_id = #{maincategory.id} and is_active = '1'")%>
+                                    <% @cat1.each do |cat| %>
+                                    <% if cat.subcategory %>
+                                    <% @sub1 = Subcategory.where("category_id = #{cat.id} and is_active = '1'")%>
+                                    <% @sub1.each do |sub| %>
+                                        <li><%= link_to(sub.subcategory,{:controller=>'public',:action=>'searchProducts',:id=>sub.id}) %>
+                                        </li>
+                                        
+                                        <%end%>        
+                                    <%end%>
+                                    <%end%>        
+                                    <%end%>
+                                   </ul>
+                                </li>
+                               <%end%>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+
+                    <!-- *** MENUS AND FILTERS END *** -->
+              </div>
+
+                <!-- /.col-md-9 -->
+            </div>
+            <!-- /.container -->
+        </div>

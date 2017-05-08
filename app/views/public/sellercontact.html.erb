@@ -1,0 +1,91 @@
+ <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><%= link_to("Home",:controller=>"public",:action=>"view") %>
+                        </li>
+                        <li><a href="#">My orders</a>
+                        </li>
+                        
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+                    <%= render partial:'shared/customer_section'%>
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9" id="customer-order">
+                <% if !@orders.nil?%>
+                    <% @orders.each do |order| %>
+                    <div class="box">
+                        <h1>MaOrder #<%= order.product.id %></h1>
+
+                        <p class="lead">Order #<%= order.product.id %> was placed on <strong><%= order.product.created_at %></strong> and is currently <strong>Being prepared</strong>.</p>
+                        <p class="text-muted">If you have any questions, please feel free to <%=link_to("contact us",:controller=>"public",:action=>"contact")%>, our customer service center is working for you 24/7.</p>
+
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Product</th>
+                                        <th>Unit price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#">
+                                            <% if order.product.photo %>
+                                                <% order.product.photo.each do |p| %>
+                                                <%= image_tag("/uploads/"+ p.photo1) %>
+                                                <%end %>
+                                                <%else%> 
+                                                    <%= image_tag("image_soon.gif") %>  
+                                                <%end%>
+                                            </a>
+                                        </td>
+                                        <td><a href="#"><%= order.product.product_name %></a>
+                                        </td>
+                                        <td>$<%= order.product.price %></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.table-responsive -->
+
+                        <div class="row addresses">
+                            <div class="col-md-6">
+                                <h2>Seller Name :</h2>
+                                <p><%= order.product.user.userdetail.name %></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>WhatsApp Number :</h2>
+                                <p><%= order.product.user.userdetail.number %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <%end%>
+                    <%end%>
+                </div>
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+

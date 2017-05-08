@@ -1,0 +1,29 @@
+<div class="row">
+            <div class="col-lg-6 col-lg-offset-1 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+  
+  <table class="table table-hover table-bordered">
+	<thead>
+			<tr>
+				<td>Name</td>
+				<td>Brand</td>
+				
+				<td>Os</td>
+				
+				<td>Price</td>
+				
+				
+			</tr>
+	</thead>
+			<tr class="danger">
+				<td><%= @laptop.product.product_name %></td>
+				<td><%= @laptop.product.brand %></td>
+				<td><%= @laptop.os %></td>
+				<td><%= @laptop.product.price %></td>
+			</tr>
+			<%= button_to('Back to view page', :controller=>'feature',:action=>'show')  %>
+			
+				
+
+</table>
+</div>
+</div>

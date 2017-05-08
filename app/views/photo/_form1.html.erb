@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(input).prev('.photo')
+                    .attr('src', e.target.result)
+                    .width(50)
+                    .height(50)
+                    ;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<style type="text/css">
+input[type=file] {
+    display: inline;
+}
+</style>
+<div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+ <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+    <%if session[:is_admin] %>
+     <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+            <div class="col-lg-4 col-md-2 col-sm-2">
+                    <h4>Select Seller Email</h4>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                        <%= f.select("user_id", @users.collect {|u| [u.email, u.id ] }, { include_blank: "Select Email" },:class=>'form-control',:required=>true)%>
+            </div>
+    </div>
+    <% else%>
+    <%= f.hidden_field("user_id",:value=>session[:user_id]) %>
+   
+    <% end%>
+</div>
+  <table class="table" style="display: inline;">
+    <thead>
+            <tr>
+                <td>Select Product</td>
+                <td><%= select("photo", "product_id", @product.collect {|p| [p.product_name, p.id ] }, { include_blank: "Select Product"},:class=>'form-control',:required=>true)%></td>
+
+
+            </tr>
+    </thead>
+            <tr>
+                <td>Choose Images[Select Maximum of 5 photos to upload]:</td>
+                <input type="hidden" value= '<%= @photo.photo1 %>' name="photo[photo11]">
+                
+        <td><%= image_tag("/uploads/"+@photo.photo1,:size=>'50x50',:class=>'photo') %>
+        <%= f.file_field("photo1",:onchange =>"readURL(this);")%></td>
+        <input type="hidden" value= '<%= @photo.photo2 %>' name="photo[photo22]" >
+        <tr><td></td><td>
+            <%= image_tag("/uploads/"+@photo.photo2,:size=>'50x50',:class=>'photo') %>
+            <%= f.file_field("photo2",:onchange =>"readURL(this);") %>
+        </tr></td>
+        <input type="hidden" value= '<%= @photo.photo3 %>' name="photo[photo33]" >
+        <tr><td></td><td>
+            <%= image_tag("/uploads/"+@photo.photo3,:size=>'50x50',:class=>'photo') %>
+            <%= f.file_field("photo3",:onchange =>"readURL(this);") %>
+        
+        </td></tr>
+        <input type="hidden" value= '<%= @photo.photo4 %>' name="photo[photo44]" >
+        <tr><td></td><td>
+            <%= image_tag("/uploads/"+@photo.photo4,:size=>'50x50',:class=>'photo') %>
+            <%= f.file_field("photo4",:onchange =>"readURL(this);") %>
+        </td></tr>
+        <input type="hidden" value= '<%= @photo.photo5 %>' name="photo[photo55]">
+        <tr><td></td><td>
+            <%= image_tag("/uploads/"+@photo.photo5,:size=>'50x50',:class=>'photo') %>
+            <%= f.file_field("photo5",:onchange =>"readURL(this);") %>
+        </td></tr>
+
+            
+            </tr>
+</table>
+</div>
+</div>

@@ -1,0 +1,81 @@
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><%= link_to("Home",:controller=>"public",:action=>"view") %>
+                        </li>
+                        <li>New account / Sign in</li>
+                         <h4><li style="list-style-type:none;text-decoration:none;" ><%= link_to "/auth/facebook" do %><%= image_tag('facebook.png', width: '30', height: '30')%> Login or Signup With Facebook<%end%></li></h4>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h1>New account</h1>
+
+                        <p class="lead">Not our registered customer yet?</p>
+                        <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+                        <p class="text-muted">
+                        <%= render partial: "shared/errors", locals: {object: @object} %>
+                        <%= render partial: "shared/success", locals: {msg: @msg} %>
+                            
+                        </p>
+
+                        <hr>
+
+                        <%= form_for :user, :url=>{:controller=>'public',:action=>'addUser'} do |f| %>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <%= f.email_field("email",:placeholder=>"Enter Email",:class=>"form-control") %>    
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <%= f.password_field("password",:placeholder=>"Enter Password",:class=>"form-control") %>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Confirm Password</label>
+                                <%= f.password_field("confirm_password",:placeholder=>"Enter Confirm Password",:class=>"form-control") %>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
+                            </div>
+                        <%end%>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h1>Login</h1>
+
+                        <p class="lead">Already our customer?</p>
+                        <p class="text-muted"></p>
+
+                        <hr>
+
+                         <%= form_for :user, :url=>{:controller=>'login',:action=>'authenticate'} do |f| %>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                               <%= f.email_field("email",:placeholder=>"Enter Email",:class=>"form-control",:id=>"email-modal") %>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <%= f.password_field("password",:placeholder=>"Enter Password",:class=>"form-control",:id=>"password-modal") %>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                            </div>
+                        <%end%>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>

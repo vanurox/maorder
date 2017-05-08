@@ -1,0 +1,2 @@
+module MenclothingHelper
+end

@@ -1,0 +1,15 @@
+
+
+<% if @object && @object.size > 0 %>
+	<div class="row" id="shared_error">
+		
+	<div class="col-lg-offset-4 btn btn-success">
+			<%	@object.each do |e|%>
+			<div>
+				<%=	e %>
+			</div>
+			<% end %>
+	</div>
+	</div>
+
+<% end %>

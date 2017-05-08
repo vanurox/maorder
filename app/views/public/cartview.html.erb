@@ -1,0 +1,12 @@
+<%= form_for :cart,:url=>{:controller=>'public',:action=>'billing'} do |f| %>
+        <%= render partial:'shared/cartview',locals:{object:@cart} %>
+
+<% end %>
+
+	<div class="col-sm-3 col-xs-12" style="margin-bottom:20px;">
+        <%= button_to("Continue Shopping",{:controller=>'public',:action=>'view'},class: "btn btn-warning",:style=>"width:100%;") %>
+    </div>
+<div class="clearfix"></div>
+                
+
+                            

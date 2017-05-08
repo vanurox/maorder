@@ -1,0 +1,34 @@
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+    <%if session[:is_admin] %>
+     <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+            <div class="col-lg-4 col-md-2 col-sm-2">
+                    <h4>Select Seller Email</h4>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                        <%= f.select("user_id", @users.collect {|u| [u.email, u.id ] }, { include_blank: "Select Email" },:class=>'form-control',:required=>true)%>
+            </div>
+    </div>
+    <% else%>
+    <%= f.hidden_field("user_id",:value=>session[:user_id]) %>
+   
+    <% end%>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+     	<div class="col-lg-4 col-md-2 col-sm-2">
+     	        <h4>Select Product</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+				<%= select("kitchenappliance", "product_id", @product.collect {|p| [p.product_name, p.id ] }, { include_blank: "Select Product" },:class=>'form-control',:required=>true)%>
+        </div>
+</div>
+
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Color</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.color_field("color",:class=>'form-control',:required=>'true') %>
+        </div>
+</div>
+
+

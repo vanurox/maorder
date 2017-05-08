@@ -1,0 +1,306 @@
+<script>
+$(function() {
+    $('.tooltip-wrapper').tooltip({position: "bottom"});
+});
+</script>
+<style type="text/css">
+  .tooltip-wrapper {
+  display: inline-block; /* display: block works as well */
+}
+
+.tooltip-wrapper .btn[disabled] {
+  /* don't let button block mouse events from reaching wrapper */
+  pointer-events: none;
+}
+
+.tooltip-wrapper.disabled {
+  /* OPTIONAL pointer-events setting above blocks cursor setting, so set it here */
+  cursor: pointer;
+}
+</style>
+
+
+
+
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><%= link_to("Home",:controller=>"public",:action=>"view")%>
+                        </li>
+
+                        <li><%= @product.subcategory.subcategory%></li>
+
+                        <li><%= @product.product_name%></li>
+                    </ul>
+
+                </div>
+                        <div class="col-xs-12">
+                           <h3 style="cursor:pointer;margin-left:20px;margin-top:-10px;position:relative;z-index:100;" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars" aria-hidden="true"></i> Categories</h3>
+                       </div>
+                <div class="col-md-3 collapse" id="demo" >
+                    <!-- *** MENUS AND FILTERS ***
+ _________________________________________________________ -->
+                    <%= render partial: "shared/sidecategories" %>
+                    
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Brands <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <form>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">Armani (10)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">Versace (12)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">Carlo Bruni (15)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">Jack Honey (14)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Colours <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <form>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour white"></span> White (14)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour blue"></span> Blue (10)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour green"></span> Green (20)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour yellow"></span> Yellow (13)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour red"></span> Red (10)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <!-- *** MENUS AND FILTERS END *** -->
+
+                   
+                </div>
+                <%= form_for :cart,:url=>{:controller=>'public',:action=>'addCart'} do |f| %>
+                    <%= f.hidden_field("product_id",:value=>@product.id) %>
+                   
+                <div class="col-md-9">
+
+                    <div class="row" id="productMain">
+                    
+                 
+                        <div class="col-sm-6">
+                            <div >
+                            <%if @product.photo.size > 0 %>
+                            <% @product.photo.each do |f| %>
+                                <%= image_tag("/uploads/"+ f.photo1,:class=>'img-responsive small_img cover big',:id=>"m_img" )%>  
+                                <%end%>
+                            <% else %>
+                                <%= image_tag("image_soon.gif",:class=>'img-responsive small_img cover big') %>
+                                 <%end%> 
+                            </div>
+                            <div class="ribbon sale">
+                                <div class="theribbon">SALE</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+                            <!-- /.ribbon -->
+
+                            <div class="ribbon new">
+                                <div class="theribbon">NEW</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+                            <!-- /.ribbon -->
+
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="box">
+                                <h1 class="text-center">  <%= @product.product_name  %></h1>
+                                <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
+                                </p>
+                                <p class="price">$ <%= @product.price  %></p>
+
+                                <p class="text-center buttons">
+                                <%if @value=="1"%>
+                                     <div class="tooltip-wrapper disabled" data-title="The product is already added in cart!">
+                                        <button class="btn btn-lg btn-primary des_btn" disabled  style="margin-top:20px;background:none;color:#080;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</button>
+                                    </div>
+                                    <%else%>
+                                      <%= f.hidden_field("qty",:value=>"1",:size=>'10') %>
+                                       <%= submit_tag( "Add to Cart ",:class=>'btn btn-lg btn-success clr')%>
+                                       <%end%>
+                                    
+                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                </p>
+                    <style>
+                        .sm_thmb
+                        {
+                            margin-top: 10px;
+                        }
+
+                    </style>
+                     <script>
+                        $(document).ready(function(){
+                            $(".sm_thmb").click(function(){
+                              var src = $(this).attr('src');
+                              $(".big").fadeOut(500,function(){
+                                $(this).attr("src",src).fadeIn(500);
+                              });
+                            });
+                        });
+                    </script>
+
+                            </div>
+
+                            <div class="row">
+                            <%if @product.photo.size > 0 %>
+                            <% @product.photo.each do |f| %>
+                                <div class="col-xs-4">
+                                   
+                                        <%= image_tag("/uploads/"+ f.photo1,:class=>'sm_thmb',:width=>'110px',:height=>'110px') %>
+                                       
+                             </div>
+                                <div class="col-xs-4">
+                                   
+                                        <%= image_tag("/uploads/"+ f.photo2,:class=>'sm_thmb',:width=>'110px',:height=>'110px') %>
+        
+                                </div>
+                                <div class="col-xs-4">
+                                    
+                                        <%= image_tag("/uploads/"+ f.photo3,:class=>'sm_thmb',:width=>'110px',:height=>'110px') %>
+                                        
+                                   
+                                </div>
+                                <div class="col-xs-4">
+                                   
+                                        <%= image_tag("/uploads/"+ f.photo4,:class=>'sm_thmb',:width=>'110px',:height=>'110px') %>
+                                        
+                                    
+                                </div>
+                                <div class="col-xs-4">
+                                   
+                                     <%= image_tag("/uploads/"+ f.photo5,:class=>'sm_thmb',:width=>'110px',:height=>'110px') %>
+                                        
+                                    
+                                </div><%end%>
+                                <%else%>
+                                  
+                                <div class="col-xs-4">
+                             
+                                     <%= image_tag("image_soon.gif",:class=>" sm_thmb",:width=>'110px',:height=>'110px') %>
+                                </div>
+                                <div class="col-xs-4">
+                 
+                                     <%= image_tag("image_soon.gif",:class=>" sm_thmb",:width=>'110px',:height=>'110px') %>          
+                                  
+                                </div>
+                                <div class="col-xs-4">
+                                  
+                                     <%= image_tag("image_soon.gif",:class=>" sm_thmb",:width=>'110px',:height=>'110px') %>          
+                                   
+                                </div>
+                                <div class="col-xs-4">
+                                   
+                                     <%= image_tag("image_soon.gif",:class=>"img-responsive sm_thmb",:width=>'110px',:height=>'110px') %>          
+                                    
+                                </div>
+                                <div class="col-xs-4">
+                    
+                                     <%= image_tag("image_soon.gif",:class=>"img-responsive sm_thmb",:width=>'110px',:height=>'110px') %>          
+                                
+                                </div>
+
+                                <%end%>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box" id="details">
+                        <p>
+                            <h4>Product details</h4>
+                            <p> Name:&nbsp;<%= @product.product_name  %></p>
+                            <p> Brand:&nbsp;<%= @product.brand  %></p>
+                            <h4>Material & Size & Color</h4>
+
+                            <% if @features%>
+                            <% for attribute in @feature_showlist.keys %>
+                            <ul>
+                                <li><%= attribute.humanize %>:&nbsp; 
+                                <% if attribute.humanize=="Color" %>
+                                <div style="background-color: <%= @features.attributes[attribute].to_s %>;height:20px;width: 60px;"></div>
+                                <%else%>
+                                <%= @features.attributes[attribute].to_s %>
+                                <%end%></li>
+                                
+                            </ul>
+                            <% end %>
+                            <%end%>
+                            <h4>Popularity:</h4>
+                            <p><%= @product.popularity %></p>
+
+                            <hr>
+                          
+                    </div>
+                <%end%>
+                    
+
+
+                </div>
+                <!-- /.col-md-9 -->
+            </div>
+            <!-- /.container -->
+        </div>

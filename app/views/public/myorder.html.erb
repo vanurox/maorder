@@ -1,0 +1,81 @@
+<div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li>My orders</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+                    <%= render partial:'shared/customer_section'%>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9" id="customer-orders">
+                    <div class="box">
+                        <h1>My orders</h1>
+
+                        <p class="lead">Your orders on one place.</p>
+                        <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+
+                        <hr>
+
+                        <div class="table-responsive">
+                            
+<% if @order.size > 0%>
+ <% @order.each do |o| %>
+    <details>
+    <summary class="col-xs-8 col-xs-offset-2" style="background:#444;color:#fff;padding:10px;">  
+        MAorder-<%= o.id %>
+        </summary>
+        <% @detail = Orderdetail.where("ordermaster_id = #{o.id}")%>
+        <% @detail.each do |d| %>
+       <% @product = Product.find(d.product_id)%>
+       <% @photo = Photo.find_by_product_id(@product) %>
+      <div class="col-xs-8 col-xs-offset-2 main-box" style="margin-top:20px;padding:none !important">
+    
+    <p>  
+      <div class="col-sm-5 col-sm-offset-1">
+        <% if @photo%>
+                    <%= image_tag("/uploads/"+ @photo.photo1,:class=>'img-responsive') %>
+                    <%else%> 
+              <%= image_tag("image_soon.gif",:class=>'img-responsive') %>
+
+                    <%end %>
+      </div>
+      <div class="col-sm-6  col-xs-12 " style="margin-top:30px">
+      <h4> <small>PRODUCT CODE: </small> <%= @product.product_code %></h4>
+      <h4> <small>PRODUCT NAME: </small> <%= @product.product_name %></h4>
+        <h4> <small>BRAND : </small> <%= @product.brand %></h4>
+            <h4> <small>PRIZE: </small> <%= @product.price %></h4>
+            <h4> <small>POPULARITY: </small> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></h4>
+      
+    </div>
+    </p>    
+  </div>
+  <%end%>
+</details>
+<% end %>
+<%else%>
+<details></details>
+<%end%>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->

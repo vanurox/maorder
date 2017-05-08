@@ -1,0 +1,2 @@
+module KidsclothingHelper
+end

@@ -1,0 +1,16 @@
+<%= form_for :user, :url=>{:controller=>'login',:action=>'authenticate'} do |f| %>
+    
+       
+    <label for="email">Email address:</label>
+  <%= f.text_field("email",:placeholder=>"Enter Email",:class=>"form-control") %>
+
+  
+    <label for="pwd">Password:</label>
+    
+  <%= f.password_field("password",:placeholder=>"Enter Password",:class=>"form-control") %>
+
+  
+  
+  <input type="submit" class="btn-lg btn-primary logi"  value="LOGIN">
+  
+<% end %>

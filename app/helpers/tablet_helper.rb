@@ -1,0 +1,2 @@
+module TabletHelper
+end

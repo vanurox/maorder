@@ -1,0 +1,64 @@
+ul{
+	margin: 0;
+	padding: 0;
+    list-style-type: none;
+}
+.menu ul li{
+	transition:all 0.80s ease-out 0s;
+}
+.menu ul li:hover{
+    cursor: pointer;
+}
+ul li ul{
+	display: none;
+}
+.shd
+  {
+    height: 100vh;
+    background-color: #555;
+  }
+.menu ul li ul li{
+	font-size:20px;
+	width:184px;
+	height:40px;
+	text-align:center;
+	color:#fff;
+	transition:all 0.50s ease-out 0s;
+}
+.menu ul li ul li:hover{
+	cursor: pointer;
+	border-radius:15px;
+    background:#000;
+    color: #b52e31;
+}
+.hove:hover{
+	background: #000;
+	color: #fff;
+}
+ul li:hover >ul
+{ 
+	display: block;
+}
+.blink:hover{
+	cursor: pointer;
+	color:#b52e31;
+}
+tting_menu ul li{
+   width:200px;
+   background-color: #000;
+}
+.setting_menu ul li ul{
+    display: none;
+}
+.setting_menu ul li:hover>ul{
+	cursor: pointer;
+    display: block;
+}
+.dikhaomenu{
+	visibility: hidden;
+}
+.form_box{
+    	height: 100vh;
+    	background:#3c8dbc;
+}
+
