@@ -5,12 +5,20 @@ class AdminController < ApplicationController
 	include ApplicationHelper
   def admin
   	dp
-    session[:count_user] = User.count('email', :distinct => true)
-    session[:count_order] = Ordermaster.count('id')
-    session[:count_shipping] = Shipping.count('id')
-    session[:count_billing] = Billing.count('id')
-  	session[:count_product] = Product.count('id')
-  	session[:count_seller] = User.where('is_seller = true').count('email', :distinct => true)
+    if session[:is_admin]
+       session[:count_shipping] = Shipping.count('id')
+        session[:count_billing] = Billing.count('id')
+        session[:count_product] = Product.count('id')
+        session[:count_seller] = User.where('is_seller = true').count('email', :distinct => true)
+        session[:count_user] = User.count('email', :distinct => true)
+        session[:count_order] = Ordermaster.count('id')
+    elsif session[:is_seller]
+       
+        session[:count_product] = Product.where(:user_id =>session[:user_id]).size
+        session[:count_order] = Ordermaster.where(:user_id =>session[:user_id]).size
+      
+    end
+   
   end
   def error_msg
   	
