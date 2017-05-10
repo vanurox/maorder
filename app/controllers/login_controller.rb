@@ -39,6 +39,7 @@ def authenticate
     session[:user_id] = nil
     session[:omniauth] = nil
     session[:name] = nil
+    session[:count_order] = nil
     session[:is_admin] = nil
     session[:is_seller] = nil
     session[:products] = nil

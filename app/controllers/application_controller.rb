@@ -25,7 +25,7 @@ def logout
     session[:name] = nil
     session[:id] = nil
     session[:user_id] = nil
-    
+    session[:count_order] = nil
     session[:products] = nil
     session[:cart_size] = nil
     session[:omniauth] = nil
