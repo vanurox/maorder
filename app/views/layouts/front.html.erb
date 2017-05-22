@@ -184,13 +184,6 @@
                     <%= link_to(" ",{:controller=>"public",:action=>"register"},:class=>"fa fa-sign-in")%>
                     <%end%>
                     </p>
-                    <p  class="btn btn-default navbar-toggle acnt hidden-sm">
-                        <% if session[:email]  %>
-                        <%= link_to(" ",{:controller=>"public",:action=>"wishlist"},:class=>"fa fa-heart")%>
-                        <%else%>
-                        <%= link_to(" ",{:controller=>"public",:action=>"register"},:class=>"fa fa-heart")%>
-                        <%end%>
-                    </p>
                 </div>
 
             </div>
