@@ -1,6 +1,8 @@
 class CategoryController < ApplicationController
   layout 'admin'
   before_filter :confirm_login
+  before_filter :confirm_admin
+  
   include ApplicationHelper
   def category
     dp

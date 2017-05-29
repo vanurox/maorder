@@ -3,6 +3,7 @@ class PhotoController < ApplicationController
 	layout 'admin'
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
 
   def photo	
     @page_title = "Photo Details" 

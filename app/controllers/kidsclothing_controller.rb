@@ -4,7 +4,8 @@ class KidsclothingController < ApplicationController
   include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
-
+  before_filter :confirm_admin
+  
   def kidsclothing
     @page_title = "kids Clothing Details"
   	addFeature

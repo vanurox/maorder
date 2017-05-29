@@ -2,6 +2,7 @@ class BabyController < ApplicationController
 	layout 'admin'
 include ApplicationHelper
   before_filter :confirm_login
+  before_filter :confirm_admin
   before_filter :dp
   
   def baby 

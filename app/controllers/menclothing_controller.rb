@@ -1,7 +1,8 @@
 class MenclothingController < ApplicationController
 	layout 'admin'
   include ApplicationHelper
-
+  before_filter :confirm_admin
+  
   before_filter :confirm_login
   before_filter :dp
 

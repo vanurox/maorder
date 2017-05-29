@@ -4,7 +4,8 @@ class CosmeticController < ApplicationController
  include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
-
+  before_filter :confirm_admin
+  
   def cosmetic
     
     @page_title = "Cosmetic Details"

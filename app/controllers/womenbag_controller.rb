@@ -3,6 +3,7 @@ class WomenbagController < ApplicationController
   include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
 
   def womenbag
     @page_title = "Women Bags Details" 

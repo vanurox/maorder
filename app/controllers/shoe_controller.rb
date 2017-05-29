@@ -3,6 +3,7 @@ class ShoeController < ApplicationController
  include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
  
   def shoe
     @page_title = "Shoes Details" 

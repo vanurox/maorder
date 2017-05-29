@@ -1,0 +1,36 @@
+<style type="text/css">
+.color{
+	width: 55px;
+	height: 15px;
+	margin: auto auto;
+}
+</style>
+<div class="row">
+            <div class="col-lg-6 col-lg-offset-1 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+  
+  <table class="table table-hover table-bordered">
+	<thead>
+			<tr>
+				<td>Product</td>
+				<td>Name</td>
+				<td>Model</td>
+				<td>Mileage</td>
+				<td>Brand</td>
+				<td>Price</td>
+			</tr>
+	</thead>
+			<tr class="danger">
+				<td><%= @car.product.product_name %></td>
+				<td><%= @car.name %></td>
+				<td><%= @car.model %></td>
+				<td><%= @car.mileage %></td>
+				<td><%= @car.product.brand %></td> 
+				<td><%= @car.product.price %></td>
+			</tr>
+			<%= button_to('Back to view page', :controller=>'feature',:action=>'show')  %>
+			
+				
+
+</table>
+</div>
+</div>

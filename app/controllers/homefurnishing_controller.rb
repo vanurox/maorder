@@ -3,6 +3,7 @@ class HomefurnishingController < ApplicationController
   include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
 
   def homefurnishing
     @page_title = "Home Furnishing Details"

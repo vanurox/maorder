@@ -1,6 +1,7 @@
 class MaincategoryController < ApplicationController
   layout 'admin'
   before_filter :confirm_login
+  before_filter :confirm_admin
   
   def maincategory
     dp

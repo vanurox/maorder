@@ -3,6 +3,7 @@ class SmallapplianceController < ApplicationController
 include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
   
   def smallappliance 
     @page_title = "Smallappliances Details" 

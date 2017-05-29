@@ -3,6 +3,7 @@ class CameraController < ApplicationController
   include ApplicationHelper
   before_filter :confirm_login
   before_filter :dp
+  before_filter :confirm_admin
 
   def camera
     @page_title = "Camera Details"
