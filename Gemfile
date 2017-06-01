@@ -5,7 +5,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
 # gem 'pg', '~> 0.15'
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+# gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'mysql2' , '~> 0.3.13'
+
 
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
@@ -33,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+# gem 'net-ssh', '2.7.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
@@ -51,3 +53,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'capistrano', '~> 3.8', '>= 3.8.1'
+gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.1'
